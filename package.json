@@ -1,0 +1,121 @@
+{
+  "name": "frontend-library-boilerplate",
+  "description": "frontend-library-boilerplate",
+  "version": "0.0.1",
+  "author": {
+    "name": "Zac Anger",
+    "email": "zac@zacanger.com",
+    "url": "http://zacanger.com"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "run-s -s build:clean build:rollup",
+    "build:clean": "rm -rf lib && mkdir -p lib",
+    "build:rollup": "rollup -c",
+    "cover": "npm run test:jest -- --coverage --no-cache",
+    "cover:coveralls": "if [ -n \"$COVERALLS_REPO_TOKEN\" ] ; then coveralls < coverage/lcov.info ; fi || true",
+    "format": "prettier --write *.js \"src/*.js\" && fixpack",
+    "prebuild": "npm run test:build",
+    "precommit": "lint-staged",
+    "preversion": "npm t",
+    "test": "run-s -s test:lint test:flow test:jest",
+    "test:build": "run-s -s test:lint test:flow cover cover:coveralls",
+    "test:flow": "flow check",
+    "test:jest": "jest",
+    "test:lint": "eslint -c .eslintrc.json src",
+    "update-types": "flow-typed update-cache && flow-typed install --overwrite"
+  },
+  "homepage": "https://github.com/jane/frontend-library-boilerplate#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jane/frontend-library-boilerplate.git"
+  },
+  "bugs": "https://github.com/jane/frontend-library-boilerplate/issues",
+  "keywords": [
+    "boilerplate"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "7.0.0",
+    "@babel/core": "7.0.1",
+    "@babel/plugin-proposal-class-properties": "7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-flow": "7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "9.0.0",
+    "babel-jest": "23.6.0",
+    "babelrc-rollup": "3.0.0",
+    "coveralls": "3.0.2",
+    "eslint": "5.5.0",
+    "eslint-plugin-jane": "0.6.0",
+    "flow-bin": "0.80.0",
+    "flow-coverage-report": "0.6.0",
+    "flow-typed": "2.5.1",
+    "husky": "0.14.3",
+    "jest": "23.6.0",
+    "lint-staged": "7.2.2",
+    "mkdirp": "0.5.1",
+    "node-fetch": "2.2.0",
+    "node-localstorage": "1.3.1",
+    "npm-run-all": "4.1.3",
+    "nyc": "13.0.1",
+    "prettier": "1.14.2",
+    "rimraf": "2.6.2",
+    "rollup": "0.65.2",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-commonjs": "9.1.6",
+    "rollup-plugin-json": "3.1.0",
+    "rollup-plugin-node-builtins": "2.1.2",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-uglify": "5.0.2",
+    "rollup-watch": "4.3.1",
+    "tap-spec": "5.0.0",
+    "uglify-es": "3.3.10"
+  },
+  "engines": {
+    "node": ">=10.10.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "modulePaths": [
+      "<rootDir>/src/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/(lib|dist|node_modules)/"
+    ],
+    "testURL": "http://localhost",
+    "testEnvironment": "jsdom",
+    "testRegex": "\\.test\\.js$",
+    "coverageReporters": [
+      "json-summary",
+      "lcov",
+      "text",
+      "json"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "dist/*.js",
+      "lib/**/*.js",
+      "flow-typed/**/*.js"
+    ]
+  },
+  "private": true
+}
