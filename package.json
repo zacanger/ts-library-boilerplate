@@ -16,16 +16,14 @@
     "build:rollup": "rollup -c",
     "cover": "npm run test:jest -- --coverage --no-cache",
     "cover:coveralls": "if [ -n \"$COVERALLS_REPO_TOKEN\" ] ; then coveralls < coverage/lcov.info ; fi || true",
-    "format": "prettier --write *.js \"src/*.js\"",
+    "format": "prettier --write *.js \"src/*.ts\"",
+    "postbuild": "tsc --emitDeclarationOnly 2>&1 >/dev/null || true",
     "prebuild": "sortpack && npm run test:build",
-    "precommit": "lint-staged",
     "preversion": "npm t",
-    "test": "run-s -s test:lint test:flow test:jest",
-    "test:build": "run-s -s test:lint test:flow cover cover:coveralls",
-    "test:flow": "flow check",
+    "test": "run-s -s test:lint test:jest",
+    "test:build": "run-s -s test:lint cover cover:coveralls",
     "test:jest": "jest",
-    "test:lint": "eslint -c .eslintrc.json src",
-    "update-types": "flow-typed update-cache && flow-typed install --overwrite"
+    "test:lint": "eslint --ext .ts,.js -c .eslintrc.json src"
   },
   "homepage": "https://github.com/jane/frontend-library-boilerplate#readme",
   "repository": {
@@ -43,17 +41,15 @@
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "7.4.4",
     "@babel/preset-env": "7.4.4",
-    "@babel/preset-flow": "7.0.0",
+    "@babel/preset-typescript": "7.3.3",
+    "@types/jest": "24.0.12",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "24.7.1",
     "babelrc-rollup": "3.0.0",
     "coveralls": "3.0.3",
     "eslint": "5.16.0",
-    "eslint-plugin-jane": "5.0.0",
-    "flow-bin": "0.98.0",
-    "flow-coverage-report": "0.6.1",
-    "flow-typed": "2.5.1",
+    "eslint-plugin-jane": "5.1.7",
     "husky": "2.1.0",
     "jest": "24.7.1",
     "lint-staged": "8.1.5",
@@ -70,6 +66,7 @@
     "rollup-watch": "4.3.1",
     "sortpack": "1.1.5",
     "tap-spec": "5.0.0",
+    "typescript": "3.4.5",
     "uglify-es": "3.3.10"
   },
   "engines": {
@@ -77,7 +74,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/**/*.ts"
     ],
     "coverageReporters": [
       "json-summary",
@@ -87,6 +84,7 @@
     ],
     "moduleFileExtensions": [
       "js",
+      "ts",
       "json"
     ],
     "modulePaths": [
@@ -96,23 +94,27 @@
     "testPathIgnorePatterns": [
       "<rootDir>/(lib|dist|node_modules)/"
     ],
-    "testRegex": "\\.test\\.js$",
+    "testRegex": "\\.test\\.ts$",
     "testURL": "http://localhost",
     "transform": {
-      "^.+\\.js$": "babel-jest"
+      "^.+\\.ts$": "babel-jest"
     }
   },
   "lint-staged": {
     "ignore": [
-      "dist/*.js",
-      "lib/**/*.js",
-      "flow-typed/**/*.js"
+      "dist/*",
+      "lib/**/*"
     ],
     "linters": {
-      "*.js": [
+      "*.ts": [
         "prettier --write",
         "git add"
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   }
 }

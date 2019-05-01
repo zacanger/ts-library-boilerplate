@@ -6,8 +6,10 @@ import builtins from 'rollup-plugin-node-builtins'
 import { uglify } from 'rollup-plugin-uglify'
 import { minify } from 'uglify-es'
 
+const extensions = ['.js', '.ts']
+
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: {
     file: 'lib/index.js',
     format: 'umd',
@@ -21,6 +23,7 @@ export default {
     }),
     builtins(),
     resolve({
+      extensions,
       jsnext: true,
       main: true,
       browser: true,
@@ -31,8 +34,9 @@ export default {
       extensions: ['.js'],
     }),
     babel({
+      extensions,
       presets: [
-        '@babel/preset-flow',
+        '@babel/preset-typescript',
         [
           '@babel/preset-env',
           {
