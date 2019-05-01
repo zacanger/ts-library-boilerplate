@@ -13,4 +13,4 @@ Tech:
 * TypeScript
 * Jest
 
-[MIT](./LICENSE.md)
+[License (MIT)](./LICENSE.md)
