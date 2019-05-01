@@ -1,7 +1,13 @@
 {
   "presets": [
-    "@babel/preset-flow",
-    "@babel/preset-env"
+    "@babel/preset-env",
+    [
+      "@babel/preset-typescript",
+      {
+        "isTSX": true,
+        "allExtensions": true
+      }
+    ]
   ],
   "plugins": [
     "@babel/plugin-proposal-object-rest-spread",

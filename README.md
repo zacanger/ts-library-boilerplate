@@ -10,7 +10,7 @@ Tech:
 * ES2018+
 * Babel
 * Rollup
-* Flow
+* TypeScript
 * Jest
 
 [MIT](./LICENSE.md)
