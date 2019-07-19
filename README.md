@@ -1,8 +1,8 @@
-# frontend-library-boilerplate
+# ts-library-boilerplate
 
-Boilerplate for web libraries at Jane.
+Boilerplate for web and Node libraries at Jane.
 
-[![CircleCI](https://circleci.com/gh/jane/frontend-library-boilerplate.svg?style=svg)](https://circleci.com/gh/jane/frontend-library-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/jane/frontend-library-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/jane/frontend-library-boilerplate?branch=master)
+[![CircleCI](https://circleci.com/gh/jane/ts-library-boilerplate.svg?style=svg)](https://circleci.com/gh/jane/ts-library-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/jane/ts-library-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/jane/ts-library-boilerplate?branch=master)
 
 Also see [frontend-app-boilerplate](https://github.com/jane/frontend-app-boilerplate) and [typescript-microservice-boilerplate](https://github.com/jane/typescript-microservice-boilerplate).
 
