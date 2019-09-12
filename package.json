@@ -1,6 +1,6 @@
 {
-  "name": "frontend-library-boilerplate",
-  "description": "frontend-library-boilerplate",
+  "name": "ts-library-boilerplate",
+  "description": "TypeScript boilerplate for web and Node libraries.",
   "version": "1.0.6",
   "private": true,
   "author": {
