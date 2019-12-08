@@ -19,7 +19,7 @@
     "format": "prettier --write *.js \"src/*.ts\"",
     "postbuild": "tsc --emitDeclarationOnly 2>&1 >/dev/null || true",
     "prebuild": "sortpack && npm run test:build",
-    "preversion": "npm t",
+    "preversion": "npm run build",
     "test": "run-s -s test:lint test:jest",
     "test:build": "run-s -s test:lint cover cover:coveralls",
     "test:jest": "jest",
