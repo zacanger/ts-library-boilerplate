@@ -1,7 +1,7 @@
 {
   "name": "ts-library-boilerplate",
   "description": "TypeScript boilerplate for web and Node libraries.",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": true,
   "author": {
     "email": "zac@zacanger.com",
