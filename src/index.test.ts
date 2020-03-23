@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { id, keep } from './'
+import { id, keep } from '.'
 
 describe('index', (): void => {
   describe('id', (): void => {
